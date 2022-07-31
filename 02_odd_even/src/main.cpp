@@ -15,6 +15,23 @@ void printOddOrEven(int number)
 	}
 }
 
+bool isNumber(std::string str)
+{
+	if (str[0] == '-')
+	{
+		for (int i = 1; i < str.length(); i++)
+			if (isdigit(str[i]) == false)
+				return false;
+	}
+	else
+	{
+		for (int i = 0; i < str.length(); i++)
+			if (isdigit(str[i]) == false)
+				return false;
+	}
+	return true;
+}
+
 int main(int argc, char *argv[])
 {
 	int number = -13;
@@ -47,11 +64,19 @@ int main(int argc, char *argv[])
 	//should use atoi?
 	// or std::stoi?
 
-	std::cout << argumentAsString << std::endl; // i think this should be removed
+	if (isNumber(argumentAsString) == true)
+	{
+		number = std::stoi(argumentAsString);
+		printOddOrEven(number);
+	}
+	else
+		printf("NAN\n");
+
+
+	// std::cout << argumentAsString << std::endl; // i think this should be removed
 
 	// --------------- stop
 
-	printOddOrEven(number);
 
 	return 0;
 }
