@@ -1,0 +1,10 @@
+^C:\USERS\MEDEE\ONEDRIVE\DOCUMENTS\MEDEEA\SIEMENS\C++\CPP-PLAYGROUND\01_HELLO_WORLD\CMAKEFILES\9F040D904735406DF82B2D358F168582\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/medee/OneDrive/Documents/Medeea/Siemens/C++/cpp-playground/01_hello_world -BC:/Users/medee/OneDrive/Documents/Medeea/Siemens/C++/cpp-playground/01_hello_world --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/medee/OneDrive/Documents/Medeea/Siemens/C++/cpp-playground/01_hello_world/01_hello_world.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

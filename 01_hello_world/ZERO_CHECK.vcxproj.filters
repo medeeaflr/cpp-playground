@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\medee\OneDrive\Documents\Medeea\Siemens\C++\cpp-playground\01_hello_world\CMakeFiles\9f040d904735406df82b2d358f168582\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E85AAE6F-9069-3C28-9D66-2CE782EAAE48}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
