@@ -1,9 +1,17 @@
 #include <iostream>
-
+#include <string>
+#include <cmath>
 bool isArmstrongNumber(int number)
 {
 	// TODO: implement some functionality to see if this number is an armstrong number
-
+	int aux=number, sum=0;
+	while (aux)
+	{
+		sum += pow(aux % 10, 3);
+		aux /= 10;
+	}
+	if (number == sum)
+		return true;
 	return false;
 }
 
@@ -18,6 +26,24 @@ void printIsArmstrong(int number)
 		std::cout << "NOT Armstrong" << std::endl;
 	}
 }
+
+bool isNumber(std::string str)
+{
+	if (str[0] == '-')
+	{
+		for (int i = 1; i < str.length(); i++)
+			if (isdigit(str[i]) == false)
+				return false;
+	}
+	else
+	{
+		for (int i = 0; i < str.length(); i++)
+			if (isdigit(str[i]) == false)
+				return false;
+	}
+	return true;
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -52,7 +78,13 @@ int main(int argc, char *argv[])
 	std::string argumentAsString = argv[1];
 	
 	// TODO: read number / cast to integer
+	if (isNumber(argumentAsString) == true)
+	{
+		readNumber = std::stoi(argumentAsString);
+		printIsArmstrong(readNumber);
+	}
+	else
+		printf("NAN\n");
 
-	printIsArmstrong(readNumber);
 	return 0;
 }
