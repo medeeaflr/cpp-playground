@@ -13,16 +13,37 @@ private:
 
 	// TODO: store the data
 	// hints: you can use std::string, std::vectors + string, char**, vector<vector<char>>, etc
+	char** matrix;
 public:
+	void Matrix::allocate_data() {
+		matrix = new char* [line_count];
+		for (int i = 0; i < line_count; i++) {
+			matrix[i] = new char[column_count];
+		}
+	}
+
+	void Matrix::free_data() {
+		for (int i = 0; i < line_count; i++) {
+			delete[] matrix[i];
+		}
+		delete[] matrix;
+	}
 	Matrix(size_t numColumnsX, size_t numLinesY)
 		// TODO: add functionality
 	{
 		// TODO: add functionality
+		column_count = numColumnsX;
+		line_count = numLinesY;
 	}
 
 	// Set an entire line
 	void setLine(size_t line_number, const std::string& data)
 	{
+		if (line_number > line_count)
+			std::cout << "Out of bounds.";
+		else
+			for (int i = 0; i < column_count; i++)
+				matrix[line_number][i] = data[i];
 	}
 
 	//OPTIONAL
@@ -54,13 +75,21 @@ public:
 	*/
 	void setCellXY(size_t x, size_t y, char cell_content)
 	{
-		// TODO: add functionality
+		if (x > column_count || y > line_count)
+			std::cout << "Out of bounds.";
+		else
+			matrix[y][x] = cell_content;
 	}
 
 	void print()
 	{
-		// print all lines and columns
-		// TODO: add functionality
+		for (int i = 0; i < line_count; i++)
+		{
+			for (int j = 0; j < column_count; j++)
+				std::cout << matrix[i][j] << " ";
+			std::cout << std::endl;
+		}
+		std::cout << std::endl;
 	}
 };
 
@@ -68,6 +97,7 @@ int main()
 {
 	// Create a matrix with the width of 20 and height of 10.
 	Matrix matrix(20, 10);
+	matrix.allocate_data();
 
 	matrix.setLine(0, "X-----X----X-----XX-");
 	matrix.setLine(1, "--X-----------------");
@@ -127,5 +157,6 @@ X-----X----X-----XX-
 
 	// This should silently fail (not trigger an error): cell Y=11 invalid due to limited height.
 	matrix.setCellXY(3, 11, 'O');
+	matrix.free_data();
 	return 0;
 }
