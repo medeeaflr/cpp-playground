@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include <vector>
-
+#include <fstream>
 /**
 	Define a simple book.
 */
@@ -31,11 +31,23 @@ public:
 	@param file_name The name of the file to read from (must include path).
 	@return Vector of books.
 */
+
 std::vector<Book> readBooksFromTextFile(const std::string& file_name)
 {
 	std::vector<Book> results;
 	// TODO: BEGIN read the file -------------------------------------
-
+	std::ifstream fin(file_name);
+	fin.open(file_name);
+	std::string s1, s2;
+	while (!fin.eof())
+	{
+		Book myBook;
+		std::getline(fin, s1);
+		std::getline(fin, s2);
+		myBook.name = s1;
+		myBook.authors = s2;
+		results.emplace_back(myBook);
+	}
 
 	// E.g. Book myBook;
 	//		...
